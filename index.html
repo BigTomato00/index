@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>西红柿五子棋</title>
+    <style>
+        #container{
+    width: 720px;
+    margin: 50px auto;
+    background: #ff8833;
+}
+.col{
+    width: 720px;
+    height: 40px;
+    border-left: 1px solid black;
+}
+.row{
+    width: 39px;
+    height: 39px;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    float: left;
+    cursor: pointer;
+}
+#col{
+    border-bottom: 1px solid black;
+}
+body{
+    background: #666;
+}
+#whiter{
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    font-size: 30px;
+    display: none;
+    color: white;
+}
+#blacker{
+    position: absolute;
+    top: 100px;
+    right: 100px;
+    font-size: 30px;
+}
+#whitepiece{
+    position: absolute;
+    top: 200px;
+    left: 100px;
+    font-size: 30px;
+    color: white;
+}
+#blackpiece{
+    position: absolute;
+    top: 200px;
+    right: 100px;
+    font-size: 30px;
+}
+#gameover{
+    position: relative;
+    left: 123px;
+    top: -500px;
+    font-size: 50px;
+    display: none;
+    color: red;
+}
+    </style>
+    <style>
+        body{ margin: 0;padding: 0;font-family: "微软雅黑";}
+body,html{-webkit-text-size-adjust: none;width: 100%;height: 100%;overflow: hidden;}
+*{text-decoration: none;list-style: none;}
+img{border: 0px;}
+ul,li,dl,dd,dt,p,ol,h1,h2,h3,h4,h5{font-size: 12px;font-weight: 100;padding: 0;margin: 0;}
+.wrap{margin: 0 auto;}
+.fl{float: left;}
+.fr{float: right;}
+.index{overflow: hidden;}
+.clr{clear:both; height:0px; width:100%; font-size:1px; line-height:0px; visibility:hidden; overflow:hidden;}
+.pointer{cursor:pointer;}
+.wrapper{clear: both;width: 100%;}
+word-break:break-all /*文字换行*/
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="col">
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+        </div>
+        <div class="col">
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+        </div>
+        <div class="col">
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+        </div>
+        <div class="col">
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+        </div>
+        <div class="col">
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+        </div>
+        <div class="col">
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+        </div>
+        <div class="col">
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+        </div>
+        <div class="col">
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+        </div>
+        <div class="col">
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+        </div>
+        <div class="col">
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+        </div>
+        <div class="col">
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+        </div>
+        <div class="col">
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+        </div>
+        <div class="col">
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+        </div>
+        <div class="col">
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+        </div>
+        <div class="col">
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+        </div>
+        <div class="col">
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+        </div>
+        <div class="col">
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+        </div>
+        <div class="col" id="col">
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+        </div>
+        <div id=blacker>黑方下子</div>
+        <div id=whiter>白方下子</div>
+        <div id=whitepiece>0</div>
+        <div id=blackpiece>0</div>
+        <div id=gameover>点击这里重新开始游戏</div>
+    </div>
+</body>
+<script>
+function getElementsByClassName(oDiv,TagName,classname){
+    var aTags=oDiv.getElementsByTagName(TagName);
+    list=[];
+    for(var ii in aTags)
+    {
+        var tag=aTags[ii];
+        if(tag.className==classname){
+            list.push(tag);
+        }
+    }
+    return list;
+}
+</script>
+<script>var ocontainer=document.getElementById('container');
+var ocols=getElementsByClassName(ocontainer,'div','col');
+var orows=getElementsByClassName(ocontainer,'div','row');
+var piece=1;
+var whitepiece=0;
+var blackpiece=0;
+var owhiter=document.getElementById('whiter');
+var oblacker=document.getElementById('blacker');
+var owhitepiece=document.getElementById('whitepiece');
+var oblackpiece=document.getElementById('blackpiece');
+var ogameover=document.getElementById('gameover');
+ogameover.onclick=function(){
+    window.location.reload();
+}
+var a=new Array();
+for(var i=0;i<18;i++){
+    a[i]=new Array();
+    for(var j=0;j<18;j++){
+        a[i][j]='3';
+    }
+}
+for(var i in orows){
+    orows[i].col=parseInt(i/18);
+    orows[i].row=i%18;
+    // orows[i].innerHTML=''+orows[i].col+orows[i].row;
+    orows[i].onclick=function(){
+        if(a[this.col][this.row]==3){
+            var oDiv=document.createElement('div');
+            oDiv.style.width='30px';
+            oDiv.style.height='30px';
+            oDiv.style.borderRadius = '15px';
+            oDiv.style.margin='4px auto';
+            this.appendChild(oDiv);
+            //this.innerHTML=piece;
+            a[this.col][this.row]=piece;
+            var numcol=0;
+            for(var h=0;h<18;h++){
+                if(a[this.col][h]==piece){
+                    numcol++;
+                }
+                else{
+                    numcol=0;
+                }
+                if(numcol>=5){
+                    gameover.style.display = 'block';
+                    if(piece==1){
+                        alert("黑胜!!!");
+                    }
+                    else{
+                        alert("白胜!!!");
+                    }
+                    break;
+                }
+                // console.log(num);
+            }
+            var numrow=0;
+            for(var h=0;h<18;h++){
+                if(a[h][this.row]==piece){
+                    numrow++;
+                }
+                else{
+                    numrow=0;
+                }
+                if(numrow>=5){
+                    gameover.style.display = 'block';
+                    if(piece==1){
+                        alert("黑胜!!!");
+                    }
+                    else{
+                        alert("白胜!!!");
+                    }
+                    break;
+                }
+                // console.log(numrow);
+            }
+            var num1=0;
+            var x,y;
+            var l;
+            if(this.col>this.row){
+                x=0;
+                y=this.col-this.row;
+                l=18-y;
+            }
+            else{
+                y=0;
+                x=this.row-this.col;
+                l=18-x;
+            }
+            // console.log(x+' '+y+' '+l);
+            for(var h=0;h<l;h++){
+                if(a[y+h][x+h]==piece){
+                    num1++;
+                }
+                else{
+                    num1=0;
+                }
+                if(num1>=5){
+                    gameover.style.display = 'block';
+                    if(piece==1){
+                        alert("黑胜!!!");
+                    }
+                    else{
+                        alert("白胜!!!");
+                    }
+                    break;
+                }
+                // console.log(num1);
+            }
+            x=this.col+this.row;
+            if(x>=17)
+                x=17;
+            y=this.row-x+this.col;
+            l=x-y+1;
+            // console.log(x+' '+y+' '+l);
+            num1=0;
+            for(var h=0;h<l;h++){
+                if(a[x-h][y+h]==piece){
+                    num1++;
+                }
+                else{
+                    num1=0;
+                }
+                if(num1>=5){
+                    gameover.style.display = 'block';
+                    if(piece==1){
+                        alert("黑胜!!!");
+                    }
+                    else{
+                        alert("白胜!!!");
+                    }
+                    break;
+                }
+                // console.log(num1);
+            }
+            if(piece==1){
+                piece=0;
+                oDiv.style.background = 'black';
+                oblacker.style.display='none';
+                owhiter.style.display='block';
+                whitepiece++;
+                oblackpiece.innerHTML=whitepiece;
+            }
+            else{
+                piece=1;
+                oDiv.style.background = '#FFFFF0';
+                oblacker.style.display='block';
+                owhiter.style.display='none';
+                blackpiece++;
+                owhitepiece.innerHTML=blackpiece;
+            }
+        }
+    }
+    // orows[i].innerHTML=''+orows[i].col+orows[i].row;
+}</script>
+</html>
